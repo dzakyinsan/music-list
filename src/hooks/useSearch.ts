@@ -6,7 +6,6 @@ export default function useSearch(query: string, limit: number) {
   const [messageApi, contextHolder] = message.useMessage();
 
   const [loading, setLoading] = useState(true);
-  const [hasMore, setHasMore] = useState(false);
   const [data, setData] = useState<any[]>([]);
 
   const openAlert = (message: string) => {
@@ -42,19 +41,16 @@ export default function useSearch(query: string, limit: number) {
         setData((prev) => {
           return [...new Set([...prev, ...newData])];
         });
-        setHasMore(res.data.resultCount > 0);
         setLoading(false);
       })
       .catch((e) => {
         if (axios.isCancel(e)) return;
         setLoading(false);
-        console.log(e.message);
-
         if (e.message) return openAlert(e.message);
       });
 
     return () => cancel();
   }, [query, limit]);
 
-  return { loading, data, hasMore, contextHolder };
+  return { loading, data, contextHolder };
 }
