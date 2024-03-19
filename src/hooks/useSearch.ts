@@ -48,6 +48,8 @@ export default function useSearch(query: string, limit: number) {
       .catch((e) => {
         if (axios.isCancel(e)) return;
         setLoading(false);
+        console.log(e.message);
+
         if (e.message) return openAlert(e.message);
       });
 

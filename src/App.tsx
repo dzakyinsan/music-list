@@ -40,7 +40,6 @@ function App() {
 
   return (
     <div className="App">
-      {contextHolder}
       <Header onOpenModal={() => setModal(!modal)} />
       {query && (
         <h3 className="search-for">
