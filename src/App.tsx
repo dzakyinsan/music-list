@@ -50,9 +50,11 @@ function App() {
             </div>
           )}
           {loading && <CardLoading />}
-          <Button type="dashed" onClick={() => setLimit((prev) => prev + 10)} style={{ margin: " 10px" }}>
-            Load more
-          </Button>
+          {data.length > 0 && (
+            <Button type="dashed" onClick={() => setLimit((prev) => prev + 10)} style={{ margin: " 10px" }}>
+              Load more
+            </Button>
+          )}
         </Col>
       </Row>
       <Modal title="Basic Modal" open={modal} onCancel={() => setModal(!modal)} footer={null}>
