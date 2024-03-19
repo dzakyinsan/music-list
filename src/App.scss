@@ -1,0 +1,125 @@
+@mixin justify-align($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$purple-gradient: linear-gradient(to right, #7832dc, #a25bea);
+
+.App {
+  background-color: #f8fafc;
+  color: black;
+  text-align: center;
+  min-height: 100vh;
+
+  .no-data {
+    @include justify-align(center, center);
+    height: 80vh;
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    color: white;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background-image: $purple-gradient;
+      height: 60px;
+      width: 100%;
+      border-radius: 0 0 20% 20%;
+    }
+
+    .content {
+      @include justify-align(space-between, center);
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      margin: 0 20px;
+    }
+  }
+
+  .search-for {
+    margin-top: 50px;
+    span {
+      color: #7832dc;
+    }
+  }
+
+  .ant-row {
+    display: flex;
+    justify-content: center;
+
+    .ant-col {
+      .ant-skeleton-button {
+        height: 120px;
+      }
+    }
+  }
+
+  .card-item {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    .ant-card-body {
+      padding: 10px;
+
+      img {
+        width: 100%;
+        border-radius: 10px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .play-button {
+        position: absolute;
+        left: 34%;
+        top: 38%;
+
+        img {
+          width: 40px;
+        }
+      }
+
+      .card-info {
+        @include justify-align(space-between, flex-start);
+        flex-direction: column;
+
+        h6,
+        h3 {
+          margin: 0;
+          text-align: left;
+        }
+        span {
+          font-size: 12px;
+          color: gray;
+        }
+      }
+
+      .title {
+        @include justify-align(center, flex-start);
+        flex-direction: column;
+      }
+
+      .price {
+        @include justify-align(space-between, center);
+        width: 100%;
+
+        .pop-btn {
+          background: #10b981;
+          span {
+            color: white;
+          }
+        }
+
+        h3 {
+          margin: 0;
+          color: #fdbd39;
+        }
+      }
+    }
+  }
+}
